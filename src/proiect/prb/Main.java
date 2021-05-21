@@ -1,41 +1,47 @@
 package proiect.prb;
 
-import com.sun.source.doctree.SerialTree;
-
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        Serviciu servicii = new Serviciu();
+//        Serviciu servicii = new Serviciu();
 
-        String PATH = "src/data/";
-        String PATH2 = "src/output";
+        String host = "jdbc:mysql://localhost:9900/restaurantdb";
+        String user = "root";
+        String password = "razvan";
 
-        var instance = ReadFileService.getFile();
 
-        var biciclistiiMei = instance.readBiciclist(PATH+"biciclisti.csv");
-        var soferiiMei = instance.readSoferi(PATH+"soferi.csv");
-        var restauranteleMele = instance.readRestaurants(PATH+"restaurante.csv");
-        var destinatariiMei = instance.readUsers(PATH+"destinatari.csv");
+        var createDBService = CreateDBService.getInstance();
+        var readDBService =  ReadDBService.getInstance();
+        var updateDBService = UpdateDBService.getInstance();
+        var deleteDBService = DeleteDBService.getInstance();
+        var serviciiSistem = proiect.prb.serviciiSistem.getInstance();
 
-        // cititi din fisier
-        var localulMeu = restauranteleMele.get(0);
-        var curierulMeu = soferiiMei.get(0);
-        var destinatar = destinatariiMei.get(0);
-        var curierulMeu2 = biciclistiiMei.get(0);
+        serviciiSistem.calculeazaImpozitAfacereRestaurant(host,user,password);
+        serviciiSistem.afiseazaComenziFacuteLaRestaurant(host,user,password);
+        serviciiSistem.calculeazaImpozitAfacereRestaurant(host,user,password);
 
-        // cititi de la tastatura, scrisi in fisier
-        var localulMeu2 = servicii.CreateBar(PATH2 + "localuri.csv");
-        var curierulMeu3 = servicii.CreateBiciclist(PATH2 + "biciclisti.csv");
-        var destinatar2 = servicii.CreateDestinatar(PATH2 + "destinatari.csv");
+//        updateDBService.updateUser(host,user,password);
+//        updateDBService.updatecomenzi_restaurant(host,user,password);
+//        updateDBService.updatebar(host,user,password);
+//        updateDBService.updateSofer(host,user,password);
 
-        var comandaMea = servicii.CreateComanda(localulMeu, curierulMeu, destinatar, PATH2 + "comenzi.csv");
-        var comandaMea2 = servicii.CreateComanda(localulMeu, curierulMeu2, destinatar, PATH2 + "comenzi.csv");
-        var comandaMea3 = servicii.CreateComanda(localulMeu2,curierulMeu3,destinatar2, PATH2 + "omenzi.csv");
+//        System.out.println(readDBService.showBars(host,user,password));
+//        System.out.println(readDBService.showcomenzi_restaurant(host,user,password));
+//        System.out.println(readDBService.showUsers(host,user,password));
+//        System.out.println(readDBService.showSoferi(host,password,password));
 
-        servicii.calculeazaImpozitAfacere(comandaMea.getLocal(), 2);
-        servicii.afiseazaComenziFacuteLaLocal(comandaMea.getLocal());
-        servicii.afiseazaCurieriAutorizati(localulMeu);
+
+//        deleteDBService.deleteUser(host,user,password);
+//        deleteDBService.deleteSofer(host,user,password);
+//          deleteDBService.deletebar(host,user,password);
+//        deleteDBService.deletecomanda_restaurant(host,user,password);
+
+//        createDBService.readUser(host,user,password);
+//        createDBService.readSofer(host,user,password);
+//        createDBService.readRestaurant(host,user,password);
+//        createDBService.readComandaRestaurant(host,user,password);
+//
+
 
     }
 }
