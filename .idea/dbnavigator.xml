@@ -26,7 +26,12 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="ec4ee1be-e238-4d8f-b0d7-0cd3181d3c54">
+        <schema name="information_schema" object-types="table, view, procedure, function" />
+        <schema name="mysql" object-types="table, view, procedure, function" />
+        <schema name="performance_schema" object-types="table, view, procedure, function" />
         <schema name="restaurantdb" object-types="table, view, procedure, function, constraint, index, column, dataset trigger" />
+        <schema name="sakila" object-types="table, view, procedure, function, constraint, index, column, dataset trigger" />
+        <schema name="world" object-types="table, view, procedure, function" />
       </connection>
     </loaded-nodes>
   </component>
